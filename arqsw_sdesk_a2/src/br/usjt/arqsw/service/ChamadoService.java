@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.usjt.arqsw.dao.ChamadoDAO;
 import br.usjt.arqsw.entity.Chamado;
 import br.usjt.arqsw.entity.Fila;
@@ -14,11 +17,13 @@ import br.usjt.arqsw.entity.Fila;
  * Arquitetura de software
  *
  */
+@Service
 public class ChamadoService {
 	private ChamadoDAO chamadoDAO;
-
-	public ChamadoService() {
-		chamadoDAO = new ChamadoDAO();
+	
+	@Autowired
+	public ChamadoService(ChamadoDAO chamadoDAO) {
+		this.chamadoDAO = chamadoDAO;
 	}
 	/**
 	 * Método para encontrar chamados pela Fila
