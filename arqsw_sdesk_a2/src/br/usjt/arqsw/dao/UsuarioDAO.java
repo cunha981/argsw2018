@@ -12,7 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.usjt.arqsw.entity.Usuario;
-
+/**
+ * 
+ * @author RA81617543 Igor Almeida
+ * CCP3AN-MCA 
+ * Arquitetura de software
+ *
+ */
 @Repository
 public class UsuarioDAO {
 
@@ -26,7 +32,12 @@ public class UsuarioDAO {
 			throw new IOException(e);
 		}
 	}
-
+	/**
+	 * Método que obtem um usuário pelo username
+	 * @param userName
+	 * @return Usuario
+	 * @throws IOException
+	 */
 	public Usuario obterPorUsuario(String userName) throws IOException {
 		String query = "select * from USUARIO where USERNAME = ?";
 		Usuario usuario = null;
@@ -37,8 +48,8 @@ public class UsuarioDAO {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				usuario = new Usuario();
-				usuario.setUsuario(rs.getString("USERNAME"));
-				usuario.setSenha(rs.getString("PASSWORD"));
+				usuario.setUsername(rs.getString("USERNAME"));
+				usuario.setPassword(rs.getString("PASSWORD"));
 			}
 
 		} catch (SQLException e) {

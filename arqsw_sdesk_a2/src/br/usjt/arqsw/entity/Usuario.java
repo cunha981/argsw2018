@@ -1,31 +1,45 @@
 package br.usjt.arqsw.entity;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class Usuario {
-	@NotNull(message="")
-	@NotEmpty
-	private String usuario;
+/**
+ * 
+ * @author RA81617543 Igor Almeida
+ * CCP3AN-MCA 
+ * Arquitetura de software
+ *
+ */
+public class Usuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	@NotNull(message="")
-	@NotEmpty
-	private String senha;
+	@NotNull(message="O campo usuário não pode estar vazio.")
+	@NotEmpty(message="O campo usuário não pode estar vazio.")
+	private String username;
 
-	public String getUsuario() {
-		return usuario;
+	@NotNull(message="O campo senha não pode estar vazio.")
+	@NotEmpty(message="O campo senha não pode estar vazio.")
+	private String password;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

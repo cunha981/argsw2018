@@ -7,7 +7,13 @@ import org.springframework.stereotype.Service;
 
 import br.usjt.arqsw.dao.UsuarioDAO;
 import br.usjt.arqsw.entity.Usuario;
-
+/**
+ * 
+ * @author RA81617543 Igor Almeida
+ * CCP3AN-MCA 
+ * Arquitetura de software
+ *
+ */
 @Service
 public class UsuarioService {
 	
@@ -17,10 +23,18 @@ public class UsuarioService {
 	public UsuarioService(UsuarioDAO usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
-
-	public Boolean logar(Usuario usuario) throws IOException {
-		Usuario u = usuarioDAO.obterPorUsuario(usuario.getUsuario());
+	/**
+	 * Método que valida as credenciais de um usuário
+	 * @param autenticar Usuario que quer logar
+	 * @return Usuario
+	 * @throws IOException
+	 */
+	public Usuario logar(Usuario autenticar) throws IOException {
+		Usuario usuario = usuarioDAO.obterPorUsuario(autenticar.getUsername());
 		
-		return u != null && u.getSenha().equals(usuario.getSenha());
+		if(usuario != null && usuario.getPassword().equals(autenticar.getPassword())){
+			return usuario;
+		}
+		return null;
 	}
 }

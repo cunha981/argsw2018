@@ -2,6 +2,7 @@ package br.usjt.arqsw.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.usjt.arqsw.entity.Usuario;
 import br.usjt.arqsw.service.UsuarioService;
-
+/**
+ * 
+ * @author RA81617543 Igor Almeida
+ * CCP3AN-MCA 
+ * Arquitetura de software
+ *
+ */
 @Controller
 public class UsuarioController {
 
@@ -25,18 +32,20 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String logar(@Valid Usuario usuario, BindingResult result, Model model) {
+	public String logar(@Valid Usuario usuario, BindingResult result, Model model ,HttpServletRequest request) {
 		try {
 			if (result.hasErrors()) {
 				System.out.println("Deu erro " + result.toString());
 				return "login";
 			}
-
-			Boolean l = usuarioService.logar(usuario);
-			if(l) {
-				return "index";
+			Usuario autenticado = usuarioService.logar(usuario);
+			if(autenticado == null){
+				model.addAttribute("msg", "Usuário ou senha inválidos.");
+				return "login";
 			}
-			return "login";
+			request.getSession().setAttribute("usuarioLogado", autenticado);
+			
+			return "redirect:index";
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "Erro";
@@ -45,6 +54,5 @@ public class UsuarioController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login () {
 		return "login";
-
 	}
 }
