@@ -1,7 +1,7 @@
 package br.usjt.arqsw.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class FilaService {
 	public FilaService(FilaDAO filaDAO) {
 		this.dao = filaDAO;
 	}
-	public ArrayList<Fila> listarFilas() throws IOException{
+	public List<Fila> listarFilas() throws IOException{
 		return dao.listarFilas();
 	}
 	public Fila carregar(int id) throws IOException{
