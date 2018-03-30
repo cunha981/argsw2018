@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * 
  * @author RA81617543 Igor Almeida
@@ -48,9 +50,11 @@ public class Chamado implements Serializable {
 	private String status;
 	
 	@Column(name = "DT_ABERTURA")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private Date dataAbertura;
 	
 	@Column(name = "DT_FECHAMENTO")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private Date dataFechamento;
 	
 	@Valid
