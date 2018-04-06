@@ -44,9 +44,18 @@ public class ChamadoService {
 		chamado.setDataAbertura(new Date());
 		chamado.setStatus(Chamado.ABERTO);
 		
-		Chamado chamadoSalvo = chamadoDAO.criar(chamado);
+		Chamado chamadoSalvo = chamadoDAO.salvar(chamado);
 		
 		return chamadoSalvo;
+	}
+	public Chamado fechar(int idChamado) {
+		Chamado chamado = chamadoDAO.obterPorId(idChamado);
+		chamado.setStatus(Chamado.FECHADO);
+		chamado.setDataFechamento(new Date());
+		chamadoDAO.salvar(chamado);
+		
+		return chamado;
+		
 	}
 
 }

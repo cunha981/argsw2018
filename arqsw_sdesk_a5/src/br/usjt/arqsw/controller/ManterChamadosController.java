@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.usjt.arqsw.entity.Chamado;
 import br.usjt.arqsw.entity.Fila;
@@ -116,5 +117,13 @@ public class ManterChamadosController {
 			e.printStackTrace();
 			return "Erro";
 		}
+	}
+	@RequestMapping("/fechar-chamado")
+	public String fecharChamado(@RequestParam(value = "id")int idChamado,Model model) {
+			Chamado chamado = chamadoService.fechar(idChamado);
+			model.addAttribute("chamado", chamado);
+			
+			return "ChamadoFechado";
+
 	}
 }

@@ -33,6 +33,7 @@
 	        			<th>Fechamento</th>
 	        			<th>Status</th>
 	        			<th>Tempo</th>
+	        			<th>Ação</th>
 	        		</tr>
 	        	</thead>
 	        	<tbody>
@@ -45,6 +46,12 @@
 	        				<td>${c.status }</td>
 	        				<jsp:useBean id="now" class="java.util.Date"/>  
 	        				<td><fmt:formatNumber value="${not empty c.dataFechamento? (c.dataFechamento.time - c.dataAbertura.time)/86400000: (now.time - c.dataAbertura.time)/86400000}" maxFractionDigits="0"/></td>
+	        				<c:if test="${empty c.dataFechamento }">
+	        					<td><a href="<c:url value='/fechar-chamado?id=${c.id }'/>">Fechar</a></td>
+	        				</c:if>
+	        				<c:if test="${not empty c.dataFechamento }">
+	        					<td></td>
+	        				</c:if>
 	        			</tr>
 	        		</c:forEach>
 	        	</tbody>	

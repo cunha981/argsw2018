@@ -25,13 +25,17 @@ public class ChamadoDAO {
 		return manager.createQuery("select c from Chamado c Where c.fila.id = ?").setParameter(1, id).getResultList();
 	}
 
-	public Chamado criar(Chamado chamado) throws IOException {
+	public Chamado salvar(Chamado chamado) {
 		 manager.persist(chamado);
 		 return obterUltimoRegistro();
 	}
 
-	private Chamado obterUltimoRegistro() throws IOException {
+	private Chamado obterUltimoRegistro() {
 		return (Chamado) manager.createQuery("select c from Chamado c Order By c.id desc").setMaxResults(1).getSingleResult();
+	}
+
+	public Chamado obterPorId(int idChamado) {
+		return manager.find(Chamado.class, idChamado);
 	}
 
 }
