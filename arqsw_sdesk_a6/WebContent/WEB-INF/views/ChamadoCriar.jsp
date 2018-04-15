@@ -43,6 +43,18 @@
                     </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="fila">Cliente:</label>
+                    <form:errors path="idRH" cssStyle="color:red"/><br>
+                    <select class="form-control" name="idRH">
+                        <option value="0">Selecione</option>
+                        <c:forEach var="cliente" items="${clientes}">
+                            <option value="${cliente.id}">${cliente.first_name } ${cliente.last_name } </option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
             <div id="actions" class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Salvar</button>

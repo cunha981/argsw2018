@@ -16,6 +16,10 @@
                     </li>
                     <li><a href="criar_chamado">Criar chamado</a>
                     </li>
+                    <li><a href="listar-fila">Consultar filas</a>
+                    </li>
+                    <li><a href="fila">Criar fila</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -10,9 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Service Desk</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <title>Listar Chamados</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     
 </head>
 
@@ -21,11 +21,11 @@
     <c:import url="Menu.jsp" />
     <!-- Container Principal -->
     <div id="main" class="container">
-        <h3 class="page-header">Chamado fechado</h3>
+        <h3 class="page-header">Chamado salvo</h3>
         <h5>Chamado fechado com o número ${chamado.id }</h5>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

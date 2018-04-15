@@ -31,4 +31,18 @@ public class FilaDAO {
 
 	}
 
+	public void salvar(Fila fila) {
+		manager.persist(fila);
+		
+	}
+
+	public void atualizar(Fila fila) {
+		manager.merge(fila);
+		
+	}
+
+	public void excluir(Fila fila) {
+		manager.remove(fila);
+	}
+
 }

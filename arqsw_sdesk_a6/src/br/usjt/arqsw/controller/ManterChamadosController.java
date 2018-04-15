@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.usjt.arqsw.client.ClienteRest;
 import br.usjt.arqsw.entity.Chamado;
 import br.usjt.arqsw.entity.Fila;
 import br.usjt.arqsw.service.ChamadoService;
@@ -31,11 +32,14 @@ public class ManterChamadosController {
 	private FilaService filaService;
 
 	private ChamadoService chamadoService;
+	
+	private ClienteRest clienteRest;
 
 	@Autowired
-	public ManterChamadosController(FilaService filaService, ChamadoService chamadoService) {
+	public ManterChamadosController(FilaService filaService, ChamadoService chamadoService, ClienteRest clienteRest) {
 		this.filaService = filaService;
 		this.chamadoService = chamadoService;
+		this.clienteRest = clienteRest;
 	}
 
 	/**
@@ -94,6 +98,7 @@ public class ManterChamadosController {
 	public String criarChamado(Model model) {
 		try {
 			model.addAttribute("filas", listarFilas());
+			model.addAttribute("clientes", clienteRest.listar());
 			return "ChamadoCriar";
 		} catch (IOException e) {
 			e.printStackTrace();
