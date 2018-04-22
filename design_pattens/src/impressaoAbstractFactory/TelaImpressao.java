@@ -1,4 +1,4 @@
-
+package impressaoAbstractFactory;
 public class TelaImpressao implements Impressao{
 
 	@Override

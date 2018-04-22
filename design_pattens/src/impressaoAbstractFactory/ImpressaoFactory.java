@@ -1,4 +1,4 @@
-
+package impressaoAbstractFactory;
 public class ImpressaoFactory implements AbstractImpressaoFactory{
 	@Override
 	public Impressao getimpressaoInstance(String tipoImpressao) {

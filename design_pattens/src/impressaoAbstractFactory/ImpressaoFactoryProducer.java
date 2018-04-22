@@ -1,4 +1,4 @@
-
+package impressaoAbstractFactory;
 public final class ImpressaoFactoryProducer {
 	private ImpressaoFactoryProducer(){
 		throw new AssertionError();
